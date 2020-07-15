@@ -1,14 +1,11 @@
-function main()
+dofile("../common/common.lua")
 
-    dofile("../common/downloadTools.lua")
-    dofile("../common/log.lua")
-    dofile("../common/OnStop.lua")
-    dofile("../common/timeMarket.lua")
-    dofile("../common/transId.lua")
+function main()
 
     log(os.date())
     log(os.date("%X"))
+    log("stop")
 
-    transIdWrite(100)
+   --transIdWrite(100)
 
 end
