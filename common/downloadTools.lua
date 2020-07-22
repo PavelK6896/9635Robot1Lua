@@ -9,7 +9,7 @@ CLASSCODEa = "QJSIM"
 SECCODEdemo = { "SBER", "LKOH", "GAZP", "ROSN", "GMKN", "hhh" }
 
 SECCODEf = {
-    "EuU0", "EDH0", "MXH0", "SRH0", "GDH0", "BRJ0", "GZH0",
+    "EuU0", "EDU0", "SiU0", "SRH0", "GDH0", "BRJ0", "GZH0",
     "SiM0", "SNH0", "PDH0", "MMH0", "LKH0", "SVH0", "GMH0", "SPH0", "VBH0"
 }
 
