@@ -19,48 +19,40 @@ function main()
     for i = minSize, 1, -1 do
         index22[1 + minSize - i] = (EuU0:C(EuU0.size - i) + EDUO:C(EDUO.size - i) + SiU0:C(SiU0.size - i)) / 3
     end
+
+
     smas2 = {}
     sma(20, smas2, index22)
     message("sma2 size = " .. #smas2)
-    --просто цена закрытия
-    closes1 = {}
-    for i = 1, 50 do
-        closes1[i] = SiU0:C(SiU0:Size() - 51 + i)
-    end
+
     smas1 = {}
-    sma(10, smas1, closes1)
+    sma(10, smas1, index22)
     message("sma1 size " .. #smas1)
 
+    testS2(smas1, smas2, EuU0)--тест
 
     while on do
         setTable(1, 5, os.date("%X"))
 
-        if (SiU0.size < SiU0:Size()) then
+        if (SiU0.size < SiU0:Size()) then--новая свеча
+
             index22[#index22 + 1] = (EuU0:C(EuU0:Size() - 1) + EDUO:C(EDUO:Size() - 1) + SiU0:C(SiU0:Size() - 1)) / 3
+
             smaUpdate(20, smas2, index22)
             message(tostring(smas2[#smas2]) .. " sma2")
 
-            closes1[#closes1 + 1] = SiU0:C(SiU0:Size() - 1)
-            smaUpdate(10, smas1, closes1)
+            smaUpdate(10, smas1, index22)
             message(tostring(smas1[#smas1]) .. " sma1")
 
             SiU0.size = SiU0:Size()
         end
 
-        setTable(1, 1, SECCODEf[1])
-        setTable(1, 2, EuU0:C(EuU0:Size()))
-        setTable(1, 3, EuU0:Size())
-
-        setTable(2, 1, SECCODEf[2])
-        setTable(2, 2, EDUO:C(EDUO:Size()))
-        setTable(2, 3, EDUO:Size())
-
-        setTable(3, 1, SECCODEf[3])
-        setTable(3, 2, SiU0:C(SiU0:Size()))
-        setTable(3, 3, SiU0:Size())
+        --- if (smaTest2[#smaTest2 - const1 + i] > smaTest1[#smaTest1 - const1 + i])  // стало истина опен
+        --- стало ложно слосе
 
         sleep(1000)
     end
+
     log("stop")
 end
 
