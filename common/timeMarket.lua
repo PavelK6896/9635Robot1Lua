@@ -8,6 +8,7 @@ function timeMarket()
                     log("Kliring")
                     return false
                 end
+                log("SPBFUT working")
                 return true
             end
             log("Mercet close")
@@ -18,12 +19,13 @@ function timeMarket()
                     log("Kliring")
                     return false
                 end
+                log("TQBR working")
                 return true
             end
             log("Mercet close")
             return false
-
         elseif (CLASSCODE == "QJSIM") then
+            log("QJSIM working")
             return true
         end
         log("Not Code class")

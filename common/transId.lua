@@ -1,4 +1,4 @@
-trans_id = 105
+
 
 transIdWrite = function(transId)
     local f = io.open("./TransId", "w")
@@ -16,5 +16,7 @@ transIdRead = function()
         trans_id = tonumber(f:read("*l"))
         log(tostring(trans_id .. " -TransId read"))
         f:close()
+    else
+        trans_id = 105
     end
 end

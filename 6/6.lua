@@ -29,12 +29,13 @@ function main()
     message("sma2 size = " .. #smas2)
 
 
-    testS2(smas1, smas2, EuU0)--тест
+    --testL1(smas1, smas2, EuU0) --тест
 
+    testT = true --тест transaction
     while on do
         setTable(1, 5, os.date("%X"))
 
-        if (SiU0.size < SiU0:Size()) then--новая свеча
+        if (SiU0.size < SiU0:Size()) then --новая свеча
 
             index22[#index22 + 1] = (EuU0:C(EuU0:Size() - 1) + EDUO:C(EDUO:Size() - 1) + SiU0:C(SiU0:Size() - 1)) / 3
 
@@ -44,13 +45,37 @@ function main()
             smaUpdate(10, smas1, index22)
             message(tostring(smas1[#smas1]) .. " sma1")
 
-        -- логика
+
+            if (testT) then
+                log("new -------------------------------------------------------- false")
+                transaction("S")
+                testT = false
+            else
+                log("new ********************************************************* true")
+                transaction("L")
+                testT = true
+            end
+
+
+            boolL1, textL1 = logikL1(smas1, smas2)
+            log(textL1 .. tostring(boolL1))
+
+            -- open long
+            if (boolL1) then
+                --  transaction("L")
+                message("long open ")
+            end
+
+            boolS1, textS1 = logikS1(smas1, smas2)
+            log(textS1 .. tostring(boolS1))
+
+            if (boolS1) then
+                -- transaction("S")
+                message("long close ")
+            end
 
             SiU0.size = SiU0:Size()
         end
-
-        --- if (smaTest2[#smaTest2 - const1 + i] > smaTest1[#smaTest1 - const1 + i])  // стало истина опен
-        --- стало ложно слосе
 
         sleep(1000)
     end
